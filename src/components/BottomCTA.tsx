@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react'
 import finalHeroGadgets from '../imports/final-hero-gadgets.png'
 
-export default function BottomCTA() {
+interface BottomCTAProps {
+  onOpenForm?: () => void
+}
+
+export default function BottomCTA({ onOpenForm }: BottomCTAProps) {
   const sectionRef = useRef<HTMLDivElement>(null)
   const leftRef = useRef<HTMLDivElement>(null)
   const item1Ref = useRef<HTMLDivElement>(null)
@@ -78,6 +82,7 @@ export default function BottomCTA() {
             </p>
             <button
               className="cta-yellow bottom-cta-btn"
+              onClick={onOpenForm}
               style={{
                 background: '#FFC400',
                 color: '#001060',

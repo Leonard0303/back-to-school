@@ -18,7 +18,11 @@ const STARS = [
   { top: '48%', left: '90%',  size: 6,  opacity: 0.7,  delay: 0.2 },
 ]
 
-export default function Hero() {
+interface HeroProps {
+  onOpenForm?: () => void
+}
+
+export default function Hero({ onOpenForm }: HeroProps) {
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 50)
@@ -145,7 +149,7 @@ export default function Hero() {
           transform: loaded ? 'none' : 'translateY(18px)',
           transition: 'opacity 0.6s ease 0.65s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.65s',
         }}>
-          <button className="cta-yellow" style={{
+          <button className="cta-yellow" onClick={onOpenForm} style={{
             background: '#FFC400',
             color: '#001060',
             border: 'none',
