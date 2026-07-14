@@ -270,6 +270,16 @@ h1, h2, h3, h4, h5, h6, button, p, span, div, a {
   transform: translateY(0);
 }
 
+.footer-licenses {
+  width: 100%;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .footer-licenses {
+    text-align: center;
+  }
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .benefits-outer-grid {
