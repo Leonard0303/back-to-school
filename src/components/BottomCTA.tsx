@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import finalHeroGadgets from '../imports/final-hero-gadgets.png'
+import finalHeroGadgets from '../imports/final-cta-desk-items.png'
 
 interface BottomCTAProps {
   onOpenForm?: () => void
