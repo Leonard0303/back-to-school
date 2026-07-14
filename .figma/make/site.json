@@ -1,0 +1,10 @@
+{
+  "description": "A premium telecom landing page showcasing plans and features with smooth animations and full responsiveness to engage users and drive conversions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
