@@ -241,6 +241,7 @@ export default function Pricing() {
               {/* Button */}
               <button
                 className="btn-blue"
+                onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{
                   background: '#0047D9',
                   color: 'white',
