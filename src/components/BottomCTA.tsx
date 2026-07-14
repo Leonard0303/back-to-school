@@ -24,7 +24,7 @@ export default function BottomCTA() {
   }, [])
 
   return (
-    <section id="final-cta" style={{
+    <section id="final-cta" className="bottom-cta-section" style={{
       background: 'linear-gradient(135deg, #001060 0%, #002299 40%, #0047D9 80%, #0055FF 100%)',
       padding: '72px 40px',
       position: 'relative',
@@ -45,7 +45,7 @@ export default function BottomCTA() {
       }}/>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{
+        <div className="bottom-cta-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto',
           gap: '60px',
@@ -54,7 +54,7 @@ export default function BottomCTA() {
           {/* Left content */}
           <div
             ref={leftRef}
-            className="fade-section"
+            className="fade-section bottom-cta-left"
           >
             <h2 style={{
               color: 'white',
@@ -67,7 +67,7 @@ export default function BottomCTA() {
               ПОДКЛЮЧИТЕСЬ К НОВОМУ<br/>
               <span style={{ color: '#FFC400' }}>УЧЕБНОМУ ГОДУ</span> УЖЕ СЕГОДНЯ!
             </h2>
-            <p style={{
+            <p className="bottom-cta-desc" style={{
               color: 'rgba(255,255,255,0.8)',
               fontSize: '16px',
               lineHeight: 1.65,
@@ -77,7 +77,7 @@ export default function BottomCTA() {
               Оставьте заявку. Мы подготовим всё необходимое: интернет, SIM-карту, планшет и TV для комфортного обучения.
             </p>
             <button
-              className="cta-yellow"
+              className="cta-yellow bottom-cta-btn"
               style={{
                 background: '#FFC400',
                 color: '#001060',
@@ -97,7 +97,7 @@ export default function BottomCTA() {
           {/* Right — school items */}
           <div
             ref={item1Ref}
-            className="fade-section"
+            className="fade-section bottom-cta-right"
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative', minWidth: '320px',
@@ -107,6 +107,7 @@ export default function BottomCTA() {
             <img
               src={finalHeroGadgets}
               alt="Планшет и школьные принадлежности"
+              className="bottom-cta-img"
               style={{
                 width: '100%',
                 maxWidth: '760px',

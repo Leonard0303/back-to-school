@@ -280,6 +280,38 @@ h1, h2, h3, h4, h5, h6, button, p, span, div, a {
   }
 }
 
+/* ── Bottom CTA responsive ── */
+@media (max-width: 1024px) {
+  .bottom-cta-section {
+    padding: 48px 20px !important;
+  }
+  .bottom-cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    text-align: center;
+  }
+  .bottom-cta-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bottom-cta-desc {
+    max-width: 100% !important;
+    text-align: center;
+  }
+  .bottom-cta-btn {
+    width: 100%;
+    max-width: 340px;
+  }
+  .bottom-cta-right {
+    min-width: 0 !important;
+    order: -1;
+  }
+  .bottom-cta-img {
+    max-width: 280px !important;
+  }
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .benefits-outer-grid {
