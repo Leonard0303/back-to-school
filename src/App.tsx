@@ -3,7 +3,6 @@ import type { Lang } from './translations'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import Hero from './components/Hero'
 import Pricing from './components/Pricing'
-import Benefits from './components/Benefits'
 import Steps from './components/Steps'
 import BottomCTA from './components/BottomCTA'
 import Footer from './components/Footer'
@@ -19,7 +18,6 @@ export default function App() {
       <LanguageSwitcher lang={lang} setLang={setLang} />
       <Hero lang={lang} onOpenForm={openForm} />
       <Pricing lang={lang} />
-      <Benefits lang={lang} />
       <Steps lang={lang} />
       <BottomCTA lang={lang} onOpenForm={openForm} />
       <Footer lang={lang} />
