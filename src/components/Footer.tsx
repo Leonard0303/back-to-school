@@ -28,38 +28,58 @@ export default function Footer({ lang }: { lang: Lang }) {
         </p>
 
         <div className="border-t border-gray-100 pt-6 mt-6">
-          <div className="space-y-1.5 text-[11px] md:text-xs text-gray-400 leading-relaxed">
+          {/* Disclaimer Section */}
+          <p className="text-[11px] md:text-xs text-gray-400 mb-4 italic">
+            {lang === 'ru'
+              ? "Казахтелеком оставляет за собой право изменять условия акции без предварительного уведомления. Подробнее на сайте."
+              : "Қазақтелеком акция шарттарын алдын ала ескертусіз өзгерту құқығын өзіне қалдырады. Толығырақ сайтта."
+            }
+          </p>
+
+          {/* Licenses Grid Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[11px] md:text-xs text-gray-400 leading-relaxed border-t border-gray-50 pt-4">
             {lang === 'ru' ? (
               <>
-                <p>АО «Казахтелеком» — Лицензия №14014826 от 09.10.2014 выдана Комитетом связи, информатизации и информации Министерства по Инвестициям и развитию Республики Казахстан.</p>
-                <p>АО «Кселл» (Kcell/activ) — Государственная лицензия МТК № ДС 0000270 от 08.06.1998, бессрочная, выдана Комитетом связи, информатизации и информации Министерства по инвестициям и развитию Республики Казахстан.</p>
-                <p>ТОО «МТ-С» (ALTEL/Tele2).</p>
-                <p>ТОО "ALACAST" (Телевидение) — Лицензия МКИ РК №12016823 от 22.11.2012 ТОО "ALACAST" с использованием сетей телекоммуникаций АО "Казахтелеком".</p>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">АО «Казахтелеком»:</span> Лицензия №14014826 от 09.10.2014 выдана Комитетом связи, информатизации и информации Министерства по Инвестициям и развитию Республики Казахстан.
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">АО «Кселл» (Kcell/activ):</span> Государственная лицензия МТК № ДС 0000270 от 08.06.1998, бессрочная, выдана Комитетом связи, информатизации и информации Министерства по инвестициям и развитию Республики Казахстан.
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">ТОО «МТ-С» (ALTEL/Tele2).</span>
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">ТОО "ALACAST" (Телевидение):</span> Лицензия МКИ РК №12016823 от 22.11.2012 ТОО "ALACAST" с использованием сетей телекоммуникаций АО "Казахтелеком".
+                </div>
               </>
             ) : (
               <>
-                <p>«Қазақтелеком» АҚ — Қазақстан Республикасы Инвестициялар және даму министрлігінің Байланыс, ақпараттандыру және ақпарат комитеті берген 2014.09.10 №14014826 лицензия.</p>
-                <p>«Кселл» АҚ (Kcell/activ) — Қазақстан Республикасы Инвестициялар және даму министрлігінің Байланыс, ақпараттандыру және ақпарат комитеті берген 1998.08.06 № ДС 0000270 мемлекеттік мерзімсіз лицензиясы.</p>
-                <p>«МТ-С» ЖШС (ALTEL/Tele2).</p>
-                <p>"ALACAST" ЖШС (Телевидение) — "Қазақтелеком" АҚ телекоммуникация желілерін пайдаланатын "ALACAST" ЖШС 2012.22.11 №12016823 лицензияны ҚР МАМ берген.</p>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">«Қазақтелеком» АҚ:</span> Қазақстан Республикасы Инвестициялар және даму министрлігінің Байланыс, ақпараттандыру және ақпарат комитеті берген 2014.09.10 №14014826 лицензия.
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">«Кселл» АҚ (Kcell/activ):</span> Қазақстан Республикасы Инвестициялар және даму министрлігінің Байланыс, ақпараттандыру және ақпарат комитеті берген 1998.08.06 № ДС 0000270 мемлекеттік мерзімсіз лицензиясы.
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">«МТ-С» ЖШС (ALTEL/Tele2).</span>
+                </div>
+                <div className="p-1">
+                  <span className="font-semibold text-gray-500">"ALACAST" ЖШС (Телевидение):</span> "Қазақтелеком" АҚ телекоммуникация желілерін пайдаланатын "ALACAST" ЖШС 2012.22.11 №12016823 лицензияны ҚР МАМ берген.
+                </div>
               </>
             )}
           </div>
-        </div>
 
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          flexWrap: 'wrap', gap: '8px',
-          marginTop: '16px',
-          paddingTop: '12px',
-          borderTop: '1px solid #f0f3f9',
-        }}>
-          <span style={{ fontSize: '11px', color: '#aab4cc' }}>
-            {t.footer.copyright}
-          </span>
-          <span style={{ fontSize: '11px', color: '#aab4cc' }}>
-            {t.footer.rights}
-          </span>
+          {/* Copyright Section (Address row is completely removed) */}
+          <div className="mt-6 text-[11px] md:text-xs text-gray-400 border-t border-gray-50 pt-4">
+            <p>
+              {lang === 'ru'
+                ? "© 2026 АО «Казахтелеком». Все права защищены."
+                : "© 2026 «Қазақтелеком» АҚ. Барлық құқықтар қорғалған."
+              }
+            </p>
+          </div>
         </div>
       </div>
     </footer>
