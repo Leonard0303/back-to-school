@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import type { Lang } from './translations'
+import LanguageSwitcher from './components/LanguageSwitcher'
 import Hero from './components/Hero'
 import Pricing from './components/Pricing'
 import Benefits from './components/Benefits'
@@ -9,17 +11,19 @@ import LeadFormModal from './components/LeadFormModal'
 
 export default function App() {
   const [formOpen, setFormOpen] = useState(false)
+  const [lang, setLang] = useState<Lang>('ru')
   const openForm = () => setFormOpen(true)
 
   return (
     <div>
-      <Hero onOpenForm={openForm} />
-      <Pricing />
-      <Benefits />
-      <Steps />
-      <BottomCTA onOpenForm={openForm} />
-      <Footer />
-      <LeadFormModal open={formOpen} onClose={() => setFormOpen(false)} />
+      <LanguageSwitcher lang={lang} setLang={setLang} />
+      <Hero lang={lang} onOpenForm={openForm} />
+      <Pricing lang={lang} />
+      <Benefits lang={lang} />
+      <Steps lang={lang} />
+      <BottomCTA lang={lang} onOpenForm={openForm} />
+      <Footer lang={lang} />
+      <LeadFormModal lang={lang} open={formOpen} onClose={() => setFormOpen(false)} />
     </div>
   )
 }

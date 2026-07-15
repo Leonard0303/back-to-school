@@ -1,27 +1,6 @@
 import { useEffect, useRef } from 'react'
-
-const benefits = [
-  {
-    icon: 'wifi',
-    title: 'Высокая скорость',
-    desc: 'Безлимитный интернет до 100 Мбит/с для учёбы и развлечений без ограничений',
-  },
-  {
-    icon: 'tablet',
-    title: 'Современный планшет',
-    desc: 'Защищённый планшет с предустановленными образовательными приложениями',
-  },
-  {
-    icon: 'tv',
-    title: 'Телевидение TV+',
-    desc: 'Более 200 каналов включая образовательные и детские программы',
-  },
-  {
-    icon: 'wallet',
-    title: 'Выгодная цена',
-    desc: 'Все услуги в одном пакете по специальной цене для учеников и студентов',
-  },
-]
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 
 function WifiIcon() {
   return (
@@ -79,7 +58,14 @@ function getIcon(name: string) {
   }
 }
 
-export default function Benefits() {
+export default function Benefits({ lang }: { lang: Lang }) {
+  const t = translations[lang]
+  const benefits = [
+    { icon: 'wifi', title: t.benefits.speedTitle, desc: t.benefits.speedDesc },
+    { icon: 'tablet', title: t.benefits.tabletTitle, desc: t.benefits.tabletDesc },
+    { icon: 'tv', title: t.benefits.tvTitle, desc: t.benefits.tvDesc },
+    { icon: 'wallet', title: t.benefits.priceTitle, desc: t.benefits.priceDesc },
+  ]
   const refs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -108,7 +94,7 @@ export default function Benefits() {
           marginBottom: '48px',
           letterSpacing: '0.02em',
         }}>
-          ЧТО ВЫ ПОЛУЧАЕТЕ
+          {t.benefits.title}
         </h2>
 
         <div className="benefits-outer-grid" style={{

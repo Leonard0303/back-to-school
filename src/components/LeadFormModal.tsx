@@ -1,13 +1,17 @@
 import { useEffect } from 'react'
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 
 const FORM_URL = 'https://qbox.telecom.kz/forms/#/1f1155849c774ba98f5049a7c383b5cf'
 
 interface LeadFormModalProps {
+  lang: Lang
   open: boolean
   onClose: () => void
 }
 
-export default function LeadFormModal({ open, onClose }: LeadFormModalProps) {
+export default function LeadFormModal({ lang, open, onClose }: LeadFormModalProps) {
+  const t = translations[lang]
   useEffect(() => {
     if (!open) return
     const onKeyDown = (e: KeyboardEvent) => {
@@ -54,7 +58,7 @@ export default function LeadFormModal({ open, onClose }: LeadFormModalProps) {
       >
         <button
           onClick={onClose}
-          aria-label="Закрыть форму"
+          aria-label={t.modal.closeLabel}
           style={{
             position: 'absolute',
             top: '10px',
@@ -78,7 +82,7 @@ export default function LeadFormModal({ open, onClose }: LeadFormModalProps) {
         </button>
         <iframe
           src={FORM_URL}
-          title="Форма заявки"
+          title={t.modal.formTitle}
           style={{
             width: '100%',
             height: '100%',

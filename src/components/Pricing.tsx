@@ -1,33 +1,9 @@
 import { useEffect, useRef } from 'react'
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 
-const plans = [
-  {
-    badge: '1 ПЛАН',
-    title: 'ВСЁ ВКЛЮЧЕНО',
-    items: ['Интернет', 'SIM', 'Планшет', 'TV+'],
-    icons: ['wifi', 'sim', 'tablet', 'tv'],
-    price: '11 990',
-    unit: '₸/мес',
-    featured: true,
-  },
-  {
-    badge: '2 ПЛАН',
-    title: 'ПЛАНШЕТ + SIM',
-    items: ['Планшет', 'SIM'],
-    icons: ['tablet', 'sim'],
-    price: '6 990',
-    unit: '₸',
-    featured: false,
-  },
-  {
-    badge: '3 ПЛАН',
-    title: 'ПЛАНШЕТ',
-    items: ['Планшет'],
-    icons: ['tablet'],
-    price: '5 590',
-    unit: '₸',
-    featured: false,
-  },
+const planIcons = [
+  ['wifi', 'sim', 'tablet', 'tv'],
 ]
 
 function IconWifi() {
@@ -96,8 +72,10 @@ function CheckIcon() {
   )
 }
 
-export default function Pricing() {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+export default function Pricing({ lang }: { lang: Lang }) {
+  const t = translations[lang]
+  const plan = t.plans.card1
+  const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,7 +88,7 @@ export default function Pricing() {
       },
       { threshold: 0.15 }
     )
-    cardRefs.current.forEach((el) => el && observer.observe(el))
+    if (cardRef.current) observer.observe(cardRef.current)
     return () => observer.disconnect()
   }, [])
 
@@ -126,139 +104,135 @@ export default function Pricing() {
           marginBottom: '12px',
           letterSpacing: '0.02em',
         }}>
-          ВЫБЕРИТЕ СВОЙ ПЛАН
+          {t.plans.title}
         </h2>
         <p style={{ textAlign: 'center', color: '#666', fontSize: '15px', marginBottom: '48px' }}>
-          Найдите идеальный тариф для нового учебного года
+          {t.plans.subtitle}
         </p>
 
-        {/* Cards */}
-        <div className="pricing-outer-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '24px',
-          alignItems: 'stretch',
+        {/* Single card */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}>
-          {plans.map((plan, i) => (
-            <div
-              key={i}
-              ref={(el) => { cardRefs.current[i] = el }}
-              className="pricing-card"
-              style={{
-                opacity: 0,
-                background: '#fff',
-                borderRadius: '20px',
-                border: plan.featured ? '2px solid #0047D9' : '1.5px solid #e8ecf4',
-                boxShadow: plan.featured
-                  ? '0 12px 48px rgba(0,71,217,0.15)'
-                  : '0 8px 32px rgba(0,20,80,0.08)',
-                padding: '32px 28px 28px',
-                display: 'flex',
-                flexDirection: 'column',
-                animationDelay: `${i * 0.15}s`,
-                animationFillMode: 'forwards',
-                position: 'relative',
-              }}
-            >
-              {/* Badge */}
-              <div style={{
-                display: 'inline-block',
-                background: '#FFC400',
-                color: '#001060',
-                fontSize: '12px',
-                fontWeight: 700,
-                letterSpacing: '0.08em',
-                padding: '5px 14px',
-                borderRadius: '20px',
-                marginBottom: '16px',
-                width: 'fit-content',
-              }}>
-                {plan.badge}
-              </div>
+          <div
+            ref={cardRef}
+            className="pricing-card"
+            style={{
+              opacity: 0,
+              background: '#fff',
+              borderRadius: '20px',
+              border: '2px solid #0047D9',
+              boxShadow: '0 12px 48px rgba(0,71,217,0.15)',
+              padding: '32px 28px 28px',
+              display: 'flex',
+              flexDirection: 'column',
+              animationFillMode: 'forwards',
+              position: 'relative',
+              maxWidth: '448px',
+              width: '100%',
+            }}
+          >
+            {/* Badge */}
+            <div style={{
+              display: 'inline-block',
+              background: '#FFC400',
+              color: '#001060',
+              fontSize: '12px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              padding: '5px 14px',
+              borderRadius: '20px',
+              marginBottom: '16px',
+              width: 'fit-content',
+            }}>
+              {plan.badge}
+            </div>
 
-              {/* Title */}
-              <h3 style={{
-                fontSize: '20px',
+            {/* Title */}
+            <h3 style={{
+              fontSize: '20px',
+              fontWeight: 800,
+              color: '#001060',
+              margin: '0 0 20px 0',
+              letterSpacing: '0.02em',
+            }}>
+              {plan.name}
+            </h3>
+
+            {/* Items list */}
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px 0', flex: 1 }}>
+              {plan.features.map((item, j) => (
+                <li key={j} style={{
+                  display: 'flex', alignItems: 'center', gap: '10px',
+                  fontSize: '15px', color: '#2a3a5c', fontWeight: 500,
+                  padding: '7px 0',
+                  borderBottom: j < plan.features.length - 1 ? '1px solid #f0f3f9' : 'none',
+                }}>
+                  <CheckIcon />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            {/* Icons */}
+            <div style={{
+              display: 'flex', gap: '12px', alignItems: 'center',
+              padding: '16px 0',
+              borderTop: '1px solid #f0f3f9',
+              borderBottom: '1px solid #f0f3f9',
+              marginBottom: '20px',
+              flexWrap: 'wrap',
+            }}>
+              {planIcons[0].map((icon, j) => (
+                <div key={j} className="plan-icon" style={{
+                  width: '48px', height: '48px',
+                  background: '#EEF4FF',
+                  borderRadius: '12px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  {getIcon(icon)}
+                </div>
+              ))}
+            </div>
+
+            {/* Price */}
+            <div style={{ marginBottom: '20px' }}>
+              <span style={{
+                fontSize: '36px',
                 fontWeight: 800,
                 color: '#001060',
-                margin: '0 0 20px 0',
-                letterSpacing: '0.02em',
+                letterSpacing: '-0.01em',
               }}>
-                {plan.title}
-              </h3>
-
-              {/* Items list */}
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px 0', flex: 1 }}>
-                {plan.items.map((item, j) => (
-                  <li key={j} style={{
-                    display: 'flex', alignItems: 'center', gap: '10px',
-                    fontSize: '15px', color: '#2a3a5c', fontWeight: 500,
-                    padding: '7px 0',
-                    borderBottom: j < plan.items.length - 1 ? '1px solid #f0f3f9' : 'none',
-                  }}>
-                    <CheckIcon />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Icons */}
-              <div style={{
-                display: 'flex', gap: '12px', alignItems: 'center',
-                padding: '16px 0',
-                borderTop: '1px solid #f0f3f9',
-                borderBottom: '1px solid #f0f3f9',
-                marginBottom: '20px',
-                flexWrap: 'wrap',
-              }}>
-                {plan.icons.map((icon, j) => (
-                  <div key={j} className="plan-icon" style={{
-                    width: '48px', height: '48px',
-                    background: '#EEF4FF',
-                    borderRadius: '12px',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    {getIcon(icon)}
-                  </div>
-                ))}
-              </div>
-
-              {/* Price */}
-              <div style={{ marginBottom: '20px' }}>
-                <span style={{
-                  fontSize: '36px',
-                  fontWeight: 800,
-                  color: '#001060',
-                  letterSpacing: '-0.01em',
-                }}>
-                  {plan.price}
-                </span>
-                <span style={{ fontSize: '18px', fontWeight: 600, color: '#0047D9', marginLeft: '4px' }}>
-                  {plan.unit}
-                </span>
-              </div>
-
-              {/* Button */}
-              <button
-                className="btn-blue"
-                onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: '#0047D9',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '12px',
-                  padding: '15px 0',
-                  fontSize: '15px',
-                  fontWeight: 700,
-                  letterSpacing: '0.05em',
-                  cursor: 'pointer',
-                  width: '100%',
-                }}
-              >
-                ПОДКЛЮЧИТЬ
-              </button>
+                {plan.price}
+              </span>
+              <span style={{ fontSize: '18px', fontWeight: 600, color: '#0047D9', marginLeft: '4px' }}>
+                {plan.period}
+              </span>
             </div>
-          ))}
+
+            {/* Button */}
+            <button
+              className="btn-blue"
+              onClick={() => document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })}
+              style={{
+                background: '#0047D9',
+                color: 'white',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '15px 0',
+                fontSize: '15px',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                cursor: 'pointer',
+                width: '100%',
+              }}
+            >
+              {t.plans.btn}
+            </button>
+          </div>
         </div>
       </div>
 

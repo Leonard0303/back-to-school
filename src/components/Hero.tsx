@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 import heroPhoto from '../imports/Снимок экрана 2026-07-14 121719.png'
 import ktLogo from '../imports/KT_logo_2_W (1).png'
 import tvPlusLogo from '../imports/white flat logo TV+ (1).png'
@@ -19,10 +21,12 @@ const STARS = [
 ]
 
 interface HeroProps {
+  lang: Lang
   onOpenForm?: () => void
 }
 
-export default function Hero({ onOpenForm }: HeroProps) {
+export default function Hero({ lang, onOpenForm }: HeroProps) {
+  const t = translations[lang]
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 50)
@@ -96,7 +100,7 @@ export default function Hero({ onOpenForm }: HeroProps) {
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <path d="M6.5 1L8 4.8H12L9 7.2L10.2 11L6.5 8.6L2.8 11L4 7.2L1 4.8H5Z" fill="#001060"/>
             </svg>
-            BACK TO SCHOOL
+            {t.hero.badge.replace('★ ', '')}
           </div>
 
           {/* Heading */}
@@ -108,8 +112,8 @@ export default function Hero({ onOpenForm }: HeroProps) {
             transform: loaded ? 'none' : 'translateY(24px)',
             transition: 'opacity 0.6s ease 0.35s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.35s',
           }}>
-            <span style={{ color: 'white', display: 'inline-block' }}>УЧИСЬ. ОБЩАЙСЯ.</span><br />
-            <span style={{ color: '#FFC107', display: 'inline-block' }}>ДОСТИГАЙ!</span>
+            <span style={{ color: 'white', display: 'inline-block' }}>{t.hero.title.split('. ').slice(0, -1).join('. ')}.</span><br />
+            <span style={{ color: '#FFC107', display: 'inline-block' }}>{t.hero.title.split('. ').slice(-1)[0]}</span>
           </h1>
 
           {/* Description */}
@@ -119,7 +123,7 @@ export default function Hero({ onOpenForm }: HeroProps) {
             transform: loaded ? 'none' : 'translateY(20px)',
             transition: 'opacity 0.6s ease 0.5s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.5s',
           }}>
-            Интернет, мобильная связь, TV и планшет — всё для удобного старта нового учебного года.
+            {t.hero.subtitle}
           </p>
         </div>
 
@@ -159,7 +163,7 @@ export default function Hero({ onOpenForm }: HeroProps) {
             cursor: 'pointer',
             display: 'block',
           }}>
-            ПОДКЛЮЧИТЬ СЕЙЧАС
+            {t.hero.btn}
           </button>
 
           {/* Note */}
@@ -173,7 +177,7 @@ export default function Hero({ onOpenForm }: HeroProps) {
               <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="rgba(255,255,255,0.55)" strokeWidth="1.4" fill="none"/>
               <path d="M1.5 5.5l6.5 4 6.5-4" stroke="rgba(255,255,255,0.55)" strokeWidth="1.4" strokeLinecap="round" fill="none"/>
             </svg>
-            Менеджер свяжется с вами.
+            {t.hero.manager}
           </div>
         </div>
       </div>

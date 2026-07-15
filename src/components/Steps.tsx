@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 
-const steps = [
+const stepIcons = [
   {
     num: '01',
     icon: (
@@ -48,7 +50,16 @@ const steps = [
   },
 ]
 
-export default function Steps() {
+const stepNums = ['01', '02', '03', '04']
+
+export default function Steps({ lang }: { lang: Lang }) {
+  const t = translations[lang]
+  const stepLabels = [
+    { label: t.steps.step1Title, desc: t.steps.step1Desc },
+    { label: t.steps.step2Title, desc: t.steps.step2Desc },
+    { label: t.steps.step3Title, desc: t.steps.step3Desc },
+    { label: t.steps.step4Title, desc: t.steps.step4Desc },
+  ]
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
   const arrowRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -79,7 +90,7 @@ export default function Steps() {
           marginBottom: '56px',
           letterSpacing: '0.02em',
         }}>
-          ПОДКЛЮЧИТЬСЯ ОЧЕНЬ ПРОСТО!
+          {t.steps.title}
         </h2>
 
         <div className="steps-outer-grid" style={{
@@ -89,7 +100,7 @@ export default function Steps() {
           position: 'relative',
           alignItems: 'start',
         }}>
-          {steps.map((step, i) => (
+          {stepLabels.map((step, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
               {/* Step */}
               <div
@@ -112,7 +123,7 @@ export default function Steps() {
                   margin: '0 auto 16px',
                   boxShadow: '0 6px 20px rgba(0,71,217,0.3)',
                 }}>
-                  <span style={{ color: 'white', fontSize: '20px', fontWeight: 800 }}>{step.num}</span>
+                  <span style={{ color: 'white', fontSize: '20px', fontWeight: 800 }}>{stepNums[i]}</span>
                 </div>
 
                 {/* Icon */}
@@ -123,7 +134,7 @@ export default function Steps() {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   margin: '0 auto 16px',
                 }}>
-                  {step.icon}
+                  {stepIcons[i].icon}
                 </div>
 
                 {/* Label */}
@@ -143,7 +154,7 @@ export default function Steps() {
               </div>
 
               {/* Arrow between steps */}
-              {i < steps.length - 1 && (
+              {i < stepLabels.length - 1 && (
                 <div
                   ref={(el) => { arrowRefs.current[i] = el }}
                   className="step-item"

@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react'
+import type { Lang } from '../translations'
+import { translations } from '../translations'
 import finalHeroGadgets from '../imports/final-cta-desk-items.png'
 
 interface BottomCTAProps {
+  lang: Lang
   onOpenForm?: () => void
 }
 
-export default function BottomCTA({ onOpenForm }: BottomCTAProps) {
+export default function BottomCTA({ lang, onOpenForm }: BottomCTAProps) {
+  const t = translations[lang]
   const sectionRef = useRef<HTMLDivElement>(null)
   const leftRef = useRef<HTMLDivElement>(null)
   const item1Ref = useRef<HTMLDivElement>(null)
@@ -68,8 +72,8 @@ export default function BottomCTA({ onOpenForm }: BottomCTAProps) {
               margin: '0 0 16px',
               letterSpacing: '0.02em',
             }}>
-              ПОДКЛЮЧИТЕСЬ К НОВОМУ<br/>
-              <span style={{ color: '#FFC400' }}>УЧЕБНОМУ ГОДУ</span> УЖЕ СЕГОДНЯ!
+              {t.cta.titleLine1}<br/>
+              <span style={{ color: '#FFC400' }}>{t.cta.titleHighlight}</span> {t.cta.titleLine2}
             </h2>
             <p className="bottom-cta-desc" style={{
               color: 'rgba(255,255,255,0.8)',
@@ -78,7 +82,7 @@ export default function BottomCTA({ onOpenForm }: BottomCTAProps) {
               margin: '0 0 36px',
               maxWidth: '480px',
             }}>
-              Оставьте заявку. Мы подготовим всё необходимое: интернет, SIM-карту, планшет и TV для комфортного обучения.
+              {t.cta.desc}
             </p>
             <button
               className="cta-yellow bottom-cta-btn"
@@ -95,7 +99,7 @@ export default function BottomCTA({ onOpenForm }: BottomCTAProps) {
                 cursor: 'pointer',
               }}
             >
-              ПОДКЛЮЧИТЬ СЕЙЧАС
+              {t.cta.btn}
             </button>
           </div>
 
