@@ -1,6 +1,7 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
+import { useUTM } from '../hooks/useUTM'
 
 const FORM_URL = 'https://qbox.telecom.kz/forms/#/1f1155849c774ba98f5049a7c383b5cf'
 
@@ -12,6 +13,18 @@ interface LeadFormModalProps {
 
 export default function LeadFormModal({ lang, open, onClose }: LeadFormModalProps) {
   const t = translations[lang]
+  const { getUTMParams } = useUTM()
+
+  const formUrlWithUTM = useMemo(() => {
+    const utms = getUTMParams()
+    const params = new URLSearchParams()
+    Object.entries(utms).forEach(([key, value]) => {
+      if (value) params.append(key, value)
+    })
+    const qs = params.toString()
+    return qs ? `${FORM_URL}?${qs}` : FORM_URL
+  }, [getUTMParams])
+
   useEffect(() => {
     if (!open) return
     const onKeyDown = (e: KeyboardEvent) => {
@@ -81,7 +94,7 @@ export default function LeadFormModal({ lang, open, onClose }: LeadFormModalProp
           ✕
         </button>
         <iframe
-          src={FORM_URL}
+          src={formUrlWithUTM}
           title={t.modal.formTitle}
           style={{
             width: '100%',

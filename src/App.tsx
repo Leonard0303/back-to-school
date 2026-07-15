@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Lang } from './translations'
+import { useUTM } from './hooks/useUTM'
 import LanguageSwitcher from './components/LanguageSwitcher'
 import Hero from './components/Hero'
 import Pricing from './components/Pricing'
@@ -9,6 +10,7 @@ import Footer from './components/Footer'
 import LeadFormModal from './components/LeadFormModal'
 
 export default function App() {
+  useUTM()
   const [formOpen, setFormOpen] = useState(false)
   const [lang, setLang] = useState<Lang>('ru')
   const openForm = () => setFormOpen(true)
