@@ -18,12 +18,12 @@ export default function LeadFormModal({ lang, open, onClose }: LeadFormModalProp
   const formUrlWithUTM = useMemo(() => {
     const utms = getUTMParams()
     const params = new URLSearchParams()
+    params.append('lang', lang === 'kz' ? 'kk' : 'ru')
     Object.entries(utms).forEach(([key, value]) => {
       if (value) params.append(key, value)
     })
-    const qs = params.toString()
-    return qs ? `${FORM_URL}?${qs}` : FORM_URL
-  }, [getUTMParams])
+    return `${FORM_URL}?${params.toString()}`
+  }, [getUTMParams, lang])
 
   useEffect(() => {
     if (!open) return

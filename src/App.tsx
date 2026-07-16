@@ -18,7 +18,7 @@ export default function App() {
   return (
     <div>
       <LanguageSwitcher lang={lang} setLang={setLang} />
-      <Hero lang={lang} onOpenForm={openForm} />
+      <Hero lang={lang} />
       <Pricing lang={lang} />
       <Steps lang={lang} />
       <BottomCTA lang={lang} onOpenForm={openForm} />

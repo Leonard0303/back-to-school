@@ -22,10 +22,12 @@ const STARS = [
 
 interface HeroProps {
   lang: Lang
-  onOpenForm?: () => void
 }
 
-export default function Hero({ lang, onOpenForm }: HeroProps) {
+export default function Hero({ lang }: HeroProps) {
+  const scrollToCTA = () => {
+    document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
+  }
   const t = translations[lang]
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
@@ -153,7 +155,7 @@ export default function Hero({ lang, onOpenForm }: HeroProps) {
           transform: loaded ? 'none' : 'translateY(18px)',
           transition: 'opacity 0.6s ease 0.65s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.65s',
         }}>
-          <button className="cta-yellow" onClick={onOpenForm} style={{
+          <button className="cta-yellow" onClick={scrollToCTA} style={{
             background: '#FFC400',
             color: '#001060',
             border: 'none',
