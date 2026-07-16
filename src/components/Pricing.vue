@@ -54,9 +54,12 @@ const t = computed(() => translations[props.lang].plans)
                 </svg>
               </div>
               <div>
+                <p class="font-bold text-blue-950 text-sm md:text-base mb-1">
+                  {{ item.title }}
+                </p>
                 <p
                   class="text-gray-700 text-sm md:text-base leading-relaxed"
-                  v-html="item.text"
+                  v-html="item.desc"
                 />
               </div>
             </div>
