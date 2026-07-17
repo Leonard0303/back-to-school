@@ -28,7 +28,7 @@ const t = computed(() => translations[props.lang])
         <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">«Кселл» АҚ (Kcell/activ):</span> Қазақстан Республикасы Инвестициялар және даму министрлігінің Байланыс, ақпараттандыру және ақпарат комитеті берген 08.06.1998 жылғы № ДС 0000270 мемлекеттік мерзімсіз лицензиясы.</p>
         <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">"ALACAST" ЖШС (Телевидение):</span> "Қазақтелеком" АҚ телекоммуникация желілерін пайдаланатын "ALACAST" ЖШС 22.11.2012 жылғы №12016823 лицензияны ҚР МАМ берген.</p>
       </template>
-      <p style="margin: 0;">{{ t.footer.oferta }}</p>
+      <p style="margin: 0;" v-html="t.footer.oferta" />
       <p style="margin: 0;">
         {{ lang === 'ru'
           ? "© 2026 АО «Казахтелеком». Все права защищены."
