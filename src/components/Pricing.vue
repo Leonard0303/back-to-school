@@ -5,6 +5,10 @@ import { translations } from '../translations'
 
 const props = defineProps<{ lang: Lang }>()
 const t = computed(() => translations[props.lang].plans)
+
+const scrollToCTA = () => {
+  document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -83,12 +87,12 @@ const t = computed(() => translations[props.lang].plans)
           </div>
 
           <div class="w-full mt-6">
-            <a
-              href="#final-cta"
+            <button
+              @click="scrollToCTA"
               class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-4 px-6 rounded-2xl shadow-lg shadow-blue-600/10 transition-all duration-200 active:scale-[0.98]"
             >
               {{ t.btn }}
-            </a>
+            </button>
           </div>
         </div>
 
