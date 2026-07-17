@@ -32,13 +32,26 @@ const steps = computed(() => [
           <!-- Modern SVG Icon Wrapper -->
           <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-6">
             <svg v-if="idx === 0" class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
             </svg>
             <svg v-else-if="idx === 1" class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
             <svg v-else class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              <!-- speed lines trailing behind the runner -->
+              <path stroke-linecap="round" d="M1 7h3M0.5 10h3.5M1 13h2.5" opacity="0.55" />
+              <!-- head -->
+              <circle cx="10" cy="4.5" r="2" />
+              <!-- box held out front -->
+              <rect x="13" y="7.5" width="5.5" height="5" rx="0.6" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6.5l1.5 3.5 1.5-1" />
+              <!-- torso -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6.5l-0.5 5" />
+              <!-- back leg, bent -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 11.5l-3.5 2 1 3.5" />
+              <!-- front leg, striding forward -->
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 11.5l2.5 3-1.5 3.5" />
             </svg>
           </div>
 
