@@ -18,6 +18,7 @@ const t = computed(() => translations[props.lang])
       <p style="margin: 0;">{{ t.footer.note2 }}</p>
       <p style="margin: 0;">{{ t.footer.note3 }}</p>
       <p style="margin: 0;">{{ t.footer.note4 }}</p>
+      <p style="margin: 0;">{{ t.footer.note5 }}</p>
       <template v-if="lang === 'ru'">
         <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">АО «Казахтелеком»:</span> Лицензия №14014826 от 09.10.2014 выдана Комитетом связи, информатизации и информации Министерства по Инвестициям и развитию Республики Казахстан.</p>
         <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">АО «Кселл» (Kcell/activ):</span> Государственная лицензия МТК № ДС 0000270 от 08.06.1998, бессрочная, выдана Комитетом связи, информатизации и информации Министерства по инвестициям и развитию Республики Казахстан.</p>
