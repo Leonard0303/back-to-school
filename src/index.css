@@ -80,20 +80,21 @@ body {
   /* Full-height welcome screen: the hero fills the whole viewport on entry,
      with the photo anchored flush to the bottom edge and the CTA laid over it. */
   .hero-bg { min-height: 100vh !important; min-height: 100dvh !important; }
+  /* Flex column (not grid) on mobile: the photo column gets `flex: 1` so it
+     honestly takes whatever height is LEFT after the text — on tall phones it
+     grows, on short phones it shrinks — instead of a fixed vh that overflows. */
   .hero-layout {
-    grid-template-columns: 1fr;
-    /* image row = 1fr so it eats all remaining height and the photo sits flush
-       to the bottom of the section (no empty blue gap). */
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas:
-      "header"
-      "text"
-      "image";
-    min-height: 100vh;
-    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    /* Definite height (not just min-height) so the flex photo column can
+       resolve "the space that's left" and the image scales to fit the screen.
+       min-height keeps it from clipping if the content is ever taller. */
+    height: 100vh;
+    height: 100dvh;
+    min-height: 560px;
     /* no bottom padding → photo bleeds into the bottom corner without a gap */
     padding: 26px 20px 0 20px;
-    row-gap: 14px;
+    gap: 14px;
   }
   .hero-header { padding-bottom: 0; }
   .hero-logo { height: 28px; }
@@ -105,9 +106,11 @@ body {
     margin-bottom: 0;
     margin-top: 8px;
   }
+  /* Fluid type: scales with viewport width so it never overflows on narrow
+     phones (320px) yet stays large on wide ones (430px+). */
   .hero-heading {
-    font-size: 40px;
-    line-height: 1.15;
+    font-size: clamp(30px, 8.5vw, 42px);
+    line-height: 1.12;
     letter-spacing: -0.03em;
     margin: 16px 0 0;
     text-transform: uppercase;
@@ -116,13 +119,15 @@ body {
     white-space: normal !important;
   }
   .hero-desc {
-    font-size: 16px;
+    font-size: clamp(14px, 4vw, 16px);
     line-height: 1.5;
-    margin: 16px 0 0;
+    margin: 14px 0 0;
     max-width: 100%;
   }
+  .hero-text { flex: 0 0 auto; }
   .hero-right-col {
-    min-height: 0;
+    flex: 1 1 auto;             /* takes all the height left after the text */
+    min-height: 0;             /* …and is allowed to shrink on short screens */
     overflow: hidden;
     display: flex;
     align-items: flex-end;      /* photo pinned to the bottom edge */
@@ -135,8 +140,11 @@ body {
   .hero-photo-mobile {
     display: block;
     width: auto;
-    height: 100%;              /* fills the remaining height, bottom-anchored */
-    max-height: 62vh;
+    /* fills the remaining column height, capped to it so it always fits and
+       scales down on short devices instead of pushing the layout taller */
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
     object-position: bottom right;
     margin: 0;
@@ -172,6 +180,9 @@ body {
     margin: 12px auto 0 auto;
     justify-content: center;
     text-align: center;
+    /* black for readability on the light lower area of the mobile hero
+       (overrides the white inline colour) */
+    color: #000 !important;
   }
   .hero-note-icon { display: none; }
 }
