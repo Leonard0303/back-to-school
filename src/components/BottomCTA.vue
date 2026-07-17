@@ -37,7 +37,7 @@ onUnmounted(() => {
 
 <template>
   <section id="final-cta" class="bottom-cta-section" style="
-    background: linear-gradient(135deg, #001060 0%, #002299 40%, #0047D9 80%, #0055FF 100%);
+    background: linear-gradient(135deg, #016ed3 0%, #0087f0 100%);
     padding: 72px 40px;
     position: relative;
     overflow: hidden;

@@ -2,7 +2,8 @@
 import { ref, computed, onMounted } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
-import heroPhoto from '../imports/Снимок экрана 2026-07-14 121719.png'
+import heroPhotoDesktop from '../imports/Дизайн без названия (6).png'
+import heroPhotoMobile from '../imports/Дизайн без названия (7).png'
 import ktLogo from '../imports/KT_logo_2_W (1).png'
 import tvPlusLogo from '../imports/white flat logo TV+ (1).png'
 import LanguageSwitcher from './LanguageSwitcher.vue'
@@ -80,6 +81,14 @@ const heroTitleLast = computed(() => t.value.hero.title.split('. ').slice(-1)[0]
       </svg>
     </div>
 
+    <!-- Desktop photo — bled flush into the section's top-right corner, independent of the padded grid -->
+    <img
+      :src="heroPhotoDesktop"
+      class="hero-photo-desktop"
+      :style="{ opacity: loaded ? 1 : 0, transition: 'opacity 0.8s ease 0.5s' }"
+      alt="Ученица с планшетом Казахтелеком"
+    />
+
     <!-- Single responsive grid — order controlled purely via CSS (grid-template-areas) -->
     <div class="hero-layout" style="position: relative; z-index: 10;">
       <!-- Header — logos -->
@@ -134,23 +143,13 @@ const heroTitleLast = computed(() => t.value.hero.title.split('. ').slice(-1)[0]
         </p>
       </div>
 
-      <!-- Image — backpack and tablet -->
-      <div class="hero-right-col" style="position: relative; display: flex; justify-content: center; align-items: center;">
-        <div
-          class="hero-photo"
-          :style="{
-            aspectRatio: '983 / 768',
-            backgroundImage: `url(${heroPhoto})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? 'translateY(0)' : 'translateY(40px)',
-            transition: 'opacity 0.8s ease 0.5s, transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s',
-            animation: loaded ? 'floatBackpack 4.2s ease-in-out 1s infinite' : 'none',
-          }"
-          aria-label="Планшет и рюкзак как на референсном фото"
-          role="img"
+      <!-- Image slot — reserves column width on desktop; holds the actual photo on mobile -->
+      <div class="hero-right-col">
+        <img
+          :src="heroPhotoMobile"
+          class="hero-photo-mobile"
+          :style="{ opacity: loaded ? 1 : 0, transition: 'opacity 0.8s ease 0.5s' }"
+          alt="Ученица с планшетом Казахтелеком"
         />
       </div>
 
