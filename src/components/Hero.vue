@@ -5,8 +5,10 @@ import { translations } from '../translations'
 import heroPhoto from '../imports/Снимок экрана 2026-07-14 121719.png'
 import ktLogo from '../imports/KT_logo_2_W (1).png'
 import tvPlusLogo from '../imports/white flat logo TV+ (1).png'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const props = defineProps<{ lang: Lang }>()
+const emit = defineEmits<{ 'update:lang': [lang: Lang] }>()
 const t = computed(() => translations[props.lang])
 
 const STARS = [
@@ -39,6 +41,8 @@ const heroTitleLast = computed(() => t.value.hero.title.split('. ').slice(-1)[0]
 
 <template>
   <section class="hero-bg" style="min-height: 100vh; position: relative; overflow: hidden;">
+    <LanguageSwitcher :lang="lang" @update:lang="emit('update:lang', $event)" />
+
     <!-- Glow blobs -->
     <div style="position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(0,100,255,0.22) 0%, transparent 70%); pointer-events: none;" />
     <div style="position: absolute; bottom: -100px; left: -60px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(0,60,180,0.18) 0%, transparent 70%); pointer-events: none;" />

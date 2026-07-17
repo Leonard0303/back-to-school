@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import type { Lang } from './translations'
 import { useUTM } from './composables/useUTM'
-import LanguageSwitcher from './components/LanguageSwitcher.vue'
 import Hero from './components/Hero.vue'
 import Pricing from './components/Pricing.vue'
 import Steps from './components/Steps.vue'
@@ -20,8 +19,7 @@ const closeForm = () => { formOpen.value = false }
 
 <template>
   <div>
-    <LanguageSwitcher v-model:lang="lang" />
-    <Hero :lang="lang" />
+    <Hero v-model:lang="lang" />
     <Pricing :lang="lang" />
     <Steps :lang="lang" />
     <BottomCTA :lang="lang" @open-form="openForm" />

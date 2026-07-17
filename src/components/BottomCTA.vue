@@ -70,7 +70,7 @@ onUnmounted(() => {
         >
           <h2 style="
             color: white;
-            font-size: clamp(26px, 3.5vw, 44px);
+            font-size: clamp(36px, 5.2vw, 64px);
             font-weight: 800;
             line-height: 1.15;
             margin: 0 0 16px;

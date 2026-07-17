@@ -54,7 +54,7 @@ const t = computed(() => translations[props.lang].plans)
                 </svg>
               </div>
               <div>
-                <p class="font-bold text-blue-950 text-sm md:text-base mb-1">
+                <p class="font-bold text-blue-950 uppercase text-[16px] md:text-[19px] mb-1">
                   {{ item.title }}
                 </p>
                 <p
