@@ -77,15 +77,16 @@ body {
 .hero-note { margin-top: 14px; font-size: 13px; justify-content: flex-start; }
 
 @media (max-width: 1024px) {
+  /* The photo is the last in-flow row and carries no bottom padding, so it
+     bleeds into both bottom corners; the CTA floats on top of it. */
   .hero-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas:
       "header"
       "text"
-      "image"
-      "cta";
-    padding: 34px 20px 40px 20px;
+      "image";
+    padding: 34px 20px 0 20px;
     row-gap: 20px;
   }
   .hero-header { padding-bottom: 0; }
@@ -114,16 +115,26 @@ body {
     margin: 16px 0 0;
     max-width: 100%;
   }
-  .hero-right-col { min-height: auto; overflow: hidden; display: flex; justify-content: flex-end; }
+  .hero-right-col { min-height: auto; overflow: visible; display: flex; justify-content: center; }
   .hero-photo-desktop { display: none; }
-  .hero-photo-mobile { display: block; width: 92%; height: auto; margin-right: -20px; }
+  .hero-photo-mobile {
+    display: block;
+    width: calc(100% + 80px);
+    max-width: none;
+    height: auto;
+    margin: 0 -40px;
+  }
   .hero-cta {
+    grid-area: auto;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 24px;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 2;
-    margin-top: -90px;
+    margin-top: 0;
   }
   .cta-yellow {
     width: 100%;
