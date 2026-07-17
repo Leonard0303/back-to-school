@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
+import courierIcon from '../imports/courier-running.png'
 
 const props = defineProps<{ lang: Lang }>()
 const t = computed(() => translations[props.lang])
@@ -38,21 +39,7 @@ const steps = computed(() => [
             <svg v-else-if="idx === 1" class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-            <svg v-else class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <!-- speed lines trailing behind the runner -->
-              <path stroke-linecap="round" d="M1 7h3M0.5 10h3.5M1 13h2.5" opacity="0.55" />
-              <!-- head -->
-              <circle cx="10" cy="4.5" r="2" />
-              <!-- box held out front -->
-              <rect x="13" y="7.5" width="5.5" height="5" rx="0.6" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6.5l1.5 3.5 1.5-1" />
-              <!-- torso -->
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6.5l-0.5 5" />
-              <!-- back leg, bent -->
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 11.5l-3.5 2 1 3.5" />
-              <!-- front leg, striding forward -->
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 11.5l2.5 3-1.5 3.5" />
-            </svg>
+            <img v-else :src="courierIcon" alt="" class="w-14 h-14 object-contain" />
           </div>
 
           <!-- Step Title -->
