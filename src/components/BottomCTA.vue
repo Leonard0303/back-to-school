@@ -42,17 +42,17 @@ onUnmounted(() => {
     position: relative;
     overflow: hidden;
   ">
-    <!-- Decorative bg circles -->
+    <!-- Decorative light glows — same colour family, kept subtle so the two-stop gradient stays clean -->
     <div style="
       position: absolute; top: -60px; right: 10%;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,122,255,0.2) 0%, transparent 70%);
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%);
       pointer-events: none;
     "/>
     <div style="
       position: absolute; bottom: -40px; left: 5%;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,80,200,0.15) 0%, transparent 70%);
+      width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
       pointer-events: none;
     "/>
 

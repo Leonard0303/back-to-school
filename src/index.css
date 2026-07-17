@@ -77,17 +77,23 @@ body {
 .hero-note { margin-top: 14px; font-size: 13px; justify-content: flex-start; }
 
 @media (max-width: 1024px) {
-  /* The photo is the last in-flow row and carries no bottom padding, so it
-     bleeds into both bottom corners; the CTA floats on top of it. */
+  /* Full-height welcome screen: the hero fills the whole viewport on entry,
+     with the photo anchored flush to the bottom edge and the CTA laid over it. */
+  .hero-bg { min-height: 100vh !important; min-height: 100dvh !important; }
   .hero-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    /* image row = 1fr so it eats all remaining height and the photo sits flush
+       to the bottom of the section (no empty blue gap). */
+    grid-template-rows: auto auto 1fr;
     grid-template-areas:
       "header"
       "text"
       "image";
-    padding: 34px 20px 0 20px;
-    row-gap: 20px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* no bottom padding → photo bleeds into the bottom corner without a gap */
+    padding: 26px 20px 0 20px;
+    row-gap: 14px;
   }
   .hero-header { padding-bottom: 0; }
   .hero-logo { height: 28px; }
@@ -115,21 +121,33 @@ body {
     margin: 16px 0 0;
     max-width: 100%;
   }
-  .hero-right-col { min-height: auto; overflow: visible; display: flex; justify-content: center; }
+  .hero-right-col {
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;      /* photo pinned to the bottom edge */
+    justify-content: flex-end;  /* …and to the right edge → bottom-right corner */
+    /* full-bleed: cancel the layout's 20px side padding so the photo can reach
+       the screen corner with no gaps */
+    margin: 0 -20px;
+  }
   .hero-photo-desktop { display: none; }
   .hero-photo-mobile {
     display: block;
-    width: calc(100% + 80px);
-    max-width: none;
-    height: auto;
-    margin: 0 -40px;
+    width: auto;
+    height: 100%;              /* fills the remaining height, bottom-anchored */
+    max-height: 62vh;
+    object-fit: contain;
+    object-position: bottom right;
+    margin: 0;
   }
+  /* CTA is taken out of flow and laid over the lower part of the photo so it
+     never adds height — keeping the whole hero (incl. the button) above the fold. */
   .hero-cta {
-    grid-area: auto;
     position: absolute;
     left: 20px;
     right: 20px;
-    bottom: 24px;
+    bottom: 22px;
     z-index: 2;
     display: flex;
     flex-direction: column;
