@@ -73,6 +73,13 @@ const scrollToCTA = () => {
         <!-- RIGHT COLUMN: Pricing & Button (1/3) -->
         <div class="p-6 md:p-10 md:w-1/3 bg-blue-50/40 flex flex-col justify-between items-center text-center">
           <div class="my-auto">
+            <div
+              class="inline-block text-white text-[10px] md:text-[11px] font-medium uppercase tracking-wide px-4 py-1.5 rounded-full mb-5"
+              style="background: linear-gradient(135deg, #016ed3 0%, #0087f0 100%); box-shadow: 0 6px 14px -4px rgba(1, 110, 211, 0.45); font-family: Helvetica, Arial, sans-serif !important;"
+            >
+              {{ t.contractBadge }}
+            </div>
+
             <p class="text-xs uppercase tracking-widest font-extrabold mb-2" style="color: #016ed3;">
               {{ t.priceLabel }}
             </p>
