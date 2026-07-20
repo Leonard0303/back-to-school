@@ -51,7 +51,10 @@ body {
 
 .hero-text { grid-area: text; min-width: 0; }
 .hero-badge { padding: 6px 18px; font-size: 13px; margin-bottom: 28px; }
-.hero-heading { font-size: clamp(38px, 5.5vw, 76px); line-height: 1.1; margin: 0 0 20px; }
+/* Heading scales with the SMALLER of viewport width and height, so it shrinks
+   both on narrow windows and on short (low-height) windows — preventing the
+   text block from overflowing the viewport on laptops with little vertical room. */
+.hero-heading { font-size: clamp(38px, min(5.2vw, 8.6vh), 76px); line-height: 1.1; margin: 0 0 20px; }
 .hero-desc { font-size: 20px; line-height: 1.7; margin: 0 0 36px; max-width: 400px; }
 
 .hero-right-col { grid-area: image; min-height: 460px; }
@@ -60,8 +63,10 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100vh;
-  max-height: 920px;
+  /* Tie the photo to the section's full height (not a fixed 100vh capped at
+     920px) so it's always flush from the top to the bottom-right corner — no
+     empty gap below it on tall 1080p+ monitors. */
+  height: 100%;
   width: auto;
   max-width: 50vw;
   object-fit: contain;
@@ -75,6 +80,39 @@ body {
 .hero-cta { grid-area: cta; }
 .cta-yellow { padding: 22px 0; font-size: 18px; width: 100%; max-width: 400px; }
 .hero-note { margin-top: 14px; font-size: 13px; justify-content: flex-start; }
+
+/* Tall desktop monitors (1080p and up): a full-height photo makes the white
+   notebook-paper reach the very top and slip under the TV+ logo. Anchor the
+   photo to the bottom-right corner instead and leave ~120px of clear blue at
+   the top so the header logos always sit on the background, never on the photo.
+   Laptops (height < 950px) are intentionally left untouched. */
+@media (min-width: 1025px) and (min-height: 950px) {
+  .hero-photo-desktop {
+    top: auto;
+    bottom: 0;
+    max-height: calc(100vh - 120px);
+    object-position: bottom right;
+  }
+}
+
+/* Compact desktop: short/low windows (e.g. laptops at 768px height or a
+   half-height browser). Squeeze the vertical rhythm so the whole hero — badge,
+   heading, description, CTA and note — still fits above the fold without scroll. */
+@media (min-width: 1025px) and (max-height: 780px) {
+  .hero-header { padding-bottom: 24px; }
+  .hero-badge { margin-bottom: 18px; }
+  .hero-heading { margin-bottom: 12px; }
+  .hero-desc { font-size: 18px; line-height: 1.5; margin-bottom: 22px; }
+  .cta-yellow { padding: 16px 0; }
+  .hero-note { margin-top: 10px; }
+}
+
+@media (min-width: 1025px) and (max-height: 640px) {
+  .hero-header { padding-bottom: 14px; }
+  .hero-badge { margin-bottom: 12px; }
+  .hero-desc { margin-bottom: 16px; }
+  .cta-yellow { padding: 13px 0; }
+}
 
 @media (max-width: 1024px) {
   /* Full-height welcome screen: the hero fills the whole viewport on entry,
