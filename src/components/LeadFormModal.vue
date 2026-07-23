@@ -14,7 +14,7 @@ const { getUTMParams } = useUTM()
 const formUrlWithUTM = computed(() => {
   const utms = getUTMParams()
   const params = new URLSearchParams()
-  params.append('lang', props.lang === 'kz' ? 'kk' : 'ru')
+  params.append('lang', props.lang === 'kz' ? 'kk' : props.lang === 'en' ? 'en' : 'ru')
   Object.entries(utms).forEach(([key, value]) => {
     if (value) params.append(key, value)
   })
