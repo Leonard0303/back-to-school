@@ -36,8 +36,11 @@ const scrollToCTA = () => {
   document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-const heroTitleFirst = computed(() => t.value.hero.title.split('. ').slice(0, -1).join('. ') + '.')
-const heroTitleLast = computed(() => t.value.hero.title.split('. ').slice(-1)[0])
+// Split the title into phrases on any sentence punctuation (. ! ?) followed by
+// a space — the last phrase is coloured yellow on its own line, the rest stay white.
+const heroParts = computed(() => t.value.hero.title.split(/(?<=[.!?])\s+/))
+const heroTitleFirst = computed(() => heroParts.value.slice(0, -1).join(' '))
+const heroTitleLast = computed(() => heroParts.value.slice(-1)[0])
 </script>
 
 <template>
