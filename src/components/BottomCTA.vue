@@ -2,7 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
-import finalHeroGadgets from '../imports/final-cta-desk-items.png'
+import finalHeroGadgets from '../imports/ChatGPT Image 22 июл. 2026 г., 14_09_47.png'
 
 const props = defineProps<{ lang: Lang }>()
 const emit = defineEmits<{ 'open-form': [] }>()
