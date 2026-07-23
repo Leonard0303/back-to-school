@@ -60,17 +60,20 @@ body {
 .hero-right-col { grid-area: image; min-height: 460px; }
 
 .hero-photo-desktop {
+  /* 001.png is a WIDE image (≈2.1:1): the girl sits in the right ~45%, the left
+     is transparent. So we span it full-width and pin it to the BOTTOM — the girl
+     lands flush in the bottom-right corner, and the image's own transparent top
+     leaves clear blue for the header logos. Sizing by width means no letterboxing
+     on normal 16:9 / 16:10 screens; max-height + contain guard very short windows. */
   position: absolute;
-  top: 0;
+  left: 0;
   right: 0;
-  /* Tie the photo to the section's full height (not a fixed 100vh capped at
-     920px) so it's always flush from the top to the bottom-right corner — no
-     empty gap below it on tall 1080p+ monitors. */
-  height: 100%;
-  width: auto;
-  max-width: 50vw;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
   object-fit: contain;
-  object-position: top right;
+  object-position: bottom right;
   z-index: 1;
   pointer-events: none;
   display: block;
@@ -80,20 +83,6 @@ body {
 .hero-cta { grid-area: cta; }
 .cta-yellow { padding: 22px 0; font-size: 18px; width: 100%; max-width: 400px; }
 .hero-note { margin-top: 14px; font-size: 13px; justify-content: flex-start; }
-
-/* Tall desktop monitors (1080p and up): a full-height photo makes the white
-   notebook-paper reach the very top and slip under the TV+ logo. Anchor the
-   photo to the bottom-right corner instead and leave ~120px of clear blue at
-   the top so the header logos always sit on the background, never on the photo.
-   Laptops (height < 950px) are intentionally left untouched. */
-@media (min-width: 1025px) and (min-height: 950px) {
-  .hero-photo-desktop {
-    top: auto;
-    bottom: 0;
-    max-height: calc(100vh - 120px);
-    object-position: bottom right;
-  }
-}
 
 /* Compact desktop: short/low windows (e.g. laptops at 768px height or a
    half-height browser). Squeeze the vertical rhythm so the whole hero — badge,
@@ -162,11 +151,16 @@ body {
     margin: 14px 0 0;
     max-width: 100%;
   }
-  .hero-text { flex: 0 0 auto; }
+  .hero-text { flex: 0 0 auto; position: relative; z-index: 2; }
   .hero-right-col {
     flex: 1 1 auto;             /* takes all the height left after the text */
     min-height: 0;             /* …and is allowed to shrink on short screens */
-    overflow: hidden;
+    /* overflow VISIBLE so the photo can be sized bigger than this column and
+       let its transparent top spill up behind the text — that's what makes the
+       girl herself larger instead of leaving her tiny in the bottom corner. */
+    overflow: visible;
+    position: relative;
+    z-index: 1;                 /* …under the text (z-index 2) */
     display: flex;
     align-items: flex-end;      /* photo pinned to the bottom edge */
     justify-content: flex-end;  /* …and to the right edge → bottom-right corner */
@@ -177,13 +171,14 @@ body {
   .hero-photo-desktop { display: none; }
   .hero-photo-mobile {
     display: block;
-    width: auto;
-    /* fills the remaining column height, capped to it so it always fits and
-       scales down on short devices instead of pushing the layout taller */
-    height: 100%;
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+    /* 002.png is tall (≈0.46:1) with a transparent top ~23%. Size it by WIDTH so
+       the girl is large and flush in the bottom-right corner. The width is capped
+       two ways: 88vw (never wider than the screen) and a height-based term so the
+       girl's head always stays BELOW the text — even on short phones. The 0.592
+       factor maps "available height under the text" to the matching photo width
+       (accounts for the transparent top). */
+    width: min(100vw, calc((100dvh - 300px) * 0.70));
+    height: auto;
     object-position: bottom right;
     margin: 0;
   }
