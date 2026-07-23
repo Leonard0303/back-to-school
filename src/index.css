@@ -50,12 +50,13 @@ body {
 .hero-logo { height: 40px; width: auto; }
 
 .hero-text { grid-area: text; min-width: 0; }
-.hero-badge { padding: 6px 18px; font-size: 13px; margin-bottom: 28px; }
+.hero-badge { padding: 8px 22px; font-size: 16px; margin-bottom: 44px; }
 /* Heading scales with the SMALLER of viewport width and height, so it shrinks
    both on narrow windows and on short (low-height) windows — preventing the
-   text block from overflowing the viewport on laptops with little vertical room. */
-.hero-heading { font-size: clamp(38px, min(5.2vw, 8.6vh), 76px); line-height: 1.1; margin: 0 0 20px; }
-.hero-desc { font-size: 20px; line-height: 1.7; margin: 0 0 36px; max-width: 400px; }
+   text block from overflowing the viewport on laptops with little vertical room.
+   Sized up so the left column fills the hero and there's no empty gap in the middle. */
+.hero-heading { font-size: clamp(48px, min(7vw, 11vh), 108px); line-height: 1.06; margin: 0 0 36px; }
+.hero-desc { font-size: 28px; line-height: 1.5; margin: 0 0 56px; max-width: 540px; }
 
 .hero-right-col { grid-area: image; min-height: 460px; }
 
