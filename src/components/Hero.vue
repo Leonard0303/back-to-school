@@ -107,7 +107,7 @@ const heroTitleLast = computed(() => heroParts.value.slice(-1)[0])
         <!-- Badge -->
         <div class="hero-badge" :style="{
           display: 'inline-flex', alignItems: 'center', gap: '8px',
-          background: '#FFC400', color: '#001060',
+          background: '#FFD400', color: '#001060',
           borderRadius: '100px',
           fontWeight: 700, letterSpacing: '0.05em',
           textTransform: 'uppercase',
@@ -132,7 +132,7 @@ const heroTitleLast = computed(() => heroParts.value.slice(-1)[0])
           transition: 'opacity 0.6s ease 0.35s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.35s',
         }">
           <span style="color: white; display: inline-block;">{{ heroTitleFirst }}</span><br />
-          <span style="color: #FFC107; display: inline-block;">{{ heroTitleLast }}</span>
+          <span style="color: #FFD400; display: inline-block;">{{ heroTitleLast }}</span>
         </h1>
 
         <!-- Description -->
@@ -163,7 +163,7 @@ const heroTitleLast = computed(() => heroParts.value.slice(-1)[0])
         transition: 'opacity 0.6s ease 0.65s, transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.65s',
       }">
         <button class="cta-yellow" @click="scrollToCTA" style="
-          background: #FFC400;
+          background: #FFD400;
           color: #001060;
           border: none;
           border-radius: 13px;

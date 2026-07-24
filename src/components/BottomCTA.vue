@@ -77,7 +77,7 @@ onUnmounted(() => {
             letter-spacing: 0.02em;
           ">
             {{ t.cta.titleLine1 }}<br/>
-            <span style="color: #FFC400;">{{ t.cta.titleHighlight }}</span> {{ t.cta.titleLine2 }}
+            <span style="color: #FFD400;">{{ t.cta.titleHighlight }}</span> {{ t.cta.titleLine2 }}
           </h2>
           <p class="bottom-cta-desc" style="
             color: rgba(255,255,255,0.8);
@@ -92,7 +92,7 @@ onUnmounted(() => {
             class="cta-yellow bottom-cta-btn"
             @click="emit('open-form')"
             style="
-              background: #FFC400;
+              background: #FFD400;
               color: #001060;
               border: none;
               border-radius: 12px;

@@ -12,19 +12,19 @@ const emit = defineEmits<{ 'update:lang': [lang: Lang] }>()
   >
     <button
       @click="emit('update:lang', 'ru')"
-      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'ru' ? 'bg-yellow-500 text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
+      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'ru' ? 'bg-[#FFD400] text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
     >
       RU
     </button>
     <button
       @click="emit('update:lang', 'kz')"
-      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'kz' ? 'bg-yellow-500 text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
+      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'kz' ? 'bg-[#FFD400] text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
     >
       KZ
     </button>
     <button
       @click="emit('update:lang', 'en')"
-      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'en' ? 'bg-yellow-500 text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
+      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'en' ? 'bg-[#FFD400] text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
     >
       EN
     </button>

@@ -30,7 +30,7 @@ const scrollToCTA = () => {
 
         <!-- LEFT COLUMN: Premium list (2/3) -->
         <div class="p-6 md:p-10 md:w-2/3 border-b-2 md:border-b-0 md:border-r-2 border-dashed border-gray-200">
-          <div class="inline-block bg-yellow-500 text-blue-950 text-xs font-black px-3 py-1 rounded-full mb-6 tracking-wide">
+          <div class="inline-block bg-[#FFD400] text-blue-950 text-xs font-black px-3 py-1 rounded-full mb-6 tracking-wide">
             {{ t.badge }}
           </div>
 
