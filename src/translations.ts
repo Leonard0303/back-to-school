@@ -49,7 +49,7 @@ export const translations = {
       note3: 'Доставка оборудования осуществляется нашим специалистом по рабочим дням с 9:00 до 18:00.',
       note4: 'В пакетах услуг «Back to School» доступно подключение дополнительных SIM-карт.',
       note5: 'Планшет предоставляется Абоненту в рамках продуктового предложения «Back to School». В случае досрочного прекращения участия в продуктовом предложении до окончания Контрактного периода Абонент обязуется оплатить АО «Кселл» остаточную стоимость планшета в порядке и на условиях, предусмотренных трехсторонним соглашением.',
-      oferta: 'Ознакомьтесь с условиями публичной <a href="https://telecom.kz/storage/uploads/b0/f0/cf54b090f0e9318b68eb4653594a824eeb04a3c8/CytCzwLZImyJcsYm8urJxU5IoFBoRK1uggo2DsAA.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #6b7a94; font-weight: 600;">оферты</a>',
+      oferta: 'Ознакомьтесь с условиями публичной <a href="https://telecom.kz/storage/uploads/b0/f0/cf54b090f0e9318b68eb4653594a824eeb04a3c8/CytCzwLZImyJcsYm8urJxU5IoFBoRK1uggo2DsAA.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #6b7a94; font-weight: 700;">оферты</a>',
     },
     modal: {
       closeLabel: 'Закрыть форму',
