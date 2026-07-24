@@ -71,7 +71,11 @@ body {
   position: absolute;
   right: 0;
   bottom: 0;
-  height: calc(100vh - 120px);
+  /* As large as possible: the photo has a transparent band above its paper
+     (~5.5% down), so we grow it until that paper edge sits just below the logo
+     row (~80px) — maximising the girl while the header logos stay on clear blue.
+     The head (~11% down) is never cropped since only the transparent top spills. */
+  height: calc((100vh - 80px) * 1.06);
   width: auto;
   max-width: 100%;
   object-fit: contain;
