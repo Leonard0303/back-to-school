@@ -63,18 +63,17 @@ body {
 .hero-right-col { grid-area: image; min-height: 460px; }
 
 .hero-photo-desktop {
-  /* 001.png is a WIDE image (≈2.1:1): the girl sits in the right ~45%, the left
-     is transparent. So we span it full-width and pin it to the BOTTOM — the girl
-     lands flush in the bottom-right corner, and the image's own transparent top
-     leaves clear blue for the header logos. Sizing by width means no letterboxing
-     on normal 16:9 / 16:10 screens; max-height + contain guard very short windows. */
+  /* IMG_2226 (desktop) is ~1.41:1: the girl sits in the right ~50%, the left is
+     transparent. Pinned to the bottom-right corner (flush, no gaps), with a clear
+     top strip (top: 120px) reserved so the header logos always sit on the blue
+     background — never under the photo's white notebook-paper. object-fit contain
+     keeps the aspect on every screen; the bottom-right stays flush. */
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: calc(100vh - 120px);
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
   object-position: bottom right;
   z-index: 1;
@@ -174,13 +173,11 @@ body {
   .hero-photo-desktop { display: none; }
   .hero-photo-mobile {
     display: block;
-    /* 002.png is tall (≈0.46:1) with a transparent top ~23%. Size it by WIDTH so
-       the girl is large and flush in the bottom-right corner. The width is capped
-       two ways: 88vw (never wider than the screen) and a height-based term so the
-       girl's head always stays BELOW the text — even on short phones. The 0.592
-       factor maps "available height under the text" to the matching photo width
-       (accounts for the transparent top). */
-    width: min(100vw, calc((100dvh - 300px) * 0.70));
+    /* IMG_2226 (mobile) is ≈0.74:1 and the girl's head sits ~14% from the top.
+       Size by WIDTH so the whole girl shows, flush in the bottom-right corner.
+       Capped two ways: 100vw (never wider than the screen, so nothing is cropped)
+       and a height-based term keeping the head below the text on short phones. */
+    width: min(100vw, calc((100dvh - 300px) * 0.80));
     height: auto;
     object-position: bottom right;
     margin: 0;
