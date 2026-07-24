@@ -21,8 +21,8 @@ const steps = computed(() => [
         {{ t.steps.title }}
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative">
-        <div v-for="(step, idx) in steps" :key="idx" class="flex flex-col items-center text-center relative group">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-x-8 md:gap-y-0 relative md:[grid-template-rows:auto_auto_auto]">
+        <div v-for="(step, idx) in steps" :key="idx" class="relative group flex flex-col items-center text-center md:grid md:[grid-template-rows:subgrid] md:[grid-row:span_3] md:justify-items-center md:items-start">
           <!-- Desktop Connecting Arrow (Hidden on Mobile) -->
           <div v-if="idx < 2" class="hidden md:block absolute top-10 -right-4 w-8 h-8 text-gray-300 z-10">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -42,7 +42,8 @@ const steps = computed(() => [
             <img v-else :src="courierIcon" alt="" class="w-14 h-14 object-contain" />
           </div>
 
-          <!-- Step Title -->
+          <!-- Step Title — the subgrid on the card makes this row the same
+               height across all columns, so descriptions always line up. -->
           <h3 class="text-xl font-bold text-blue-950 mb-3">
             {{ step.title }}
           </h3>
