@@ -17,10 +17,7 @@ const scrollToCTA = () => {
 
       <!-- Header section -->
       <div class="text-center mb-10 md:mb-14">
-        <h2
-          class="text-3xl md:text-5xl font-extrabold text-blue-950 tracking-tight mb-3"
-          :class="{ uppercase: lang !== 'ru' }"
-        >
+        <h2 class="text-3xl md:text-5xl font-extrabold text-blue-950 tracking-tight mb-3">
           {{ t.title }}
         </h2>
         <p v-if="t.subtitle" class="text-sm md:text-lg font-normal text-gray-500 max-w-xl mx-auto">

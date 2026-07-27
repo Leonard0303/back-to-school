@@ -182,8 +182,10 @@ body {
        flush in the bottom-right corner. Capped two ways: 100vw (never wider than
        the screen, so nothing is cropped) and a height-based term keeping her head
        below the text on short phones. */
-    width: min(100vw, calc((100dvh - 410px) * 1.28));
+    width: min(108vw, calc((100dvh - 335px) * 0.9));
+    max-width: none;
     height: auto;
+    flex-shrink: 0;
     object-position: bottom right;
     margin: 0;
   }
