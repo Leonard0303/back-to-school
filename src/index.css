@@ -177,11 +177,12 @@ body {
   .hero-photo-desktop { display: none; }
   .hero-photo-mobile {
     display: block;
-    /* IMG_2226 (mobile) is ≈0.74:1 and the girl's head sits ~14% from the top.
-       Size by WIDTH so the whole girl shows, flush in the bottom-right corner.
-       Capped two ways: 100vw (never wider than the screen, so nothing is cropped)
-       and a height-based term keeping the head below the text on short phones. */
-    width: min(100vw, calc((100dvh - 300px) * 0.80));
+    /* KT_B2S_website_mobile is ≈0.53:1 and the girl's head sits ~41% from the top
+       (large transparent band above her). Size by WIDTH so the whole girl shows,
+       flush in the bottom-right corner. Capped two ways: 100vw (never wider than
+       the screen, so nothing is cropped) and a height-based term keeping her head
+       below the text on short phones. */
+    width: min(100vw, calc((100dvh - 410px) * 1.28));
     height: auto;
     object-position: bottom right;
     margin: 0;
