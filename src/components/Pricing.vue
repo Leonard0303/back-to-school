@@ -88,7 +88,7 @@ const scrollToCTA = () => {
               {{ t.price }} <span class="text-base font-medium text-gray-500">{{ t.period }}</span>
             </div>
 
-            <p class="text-xs text-gray-400 mt-4 leading-relaxed max-w-[220px] mx-auto">
+            <p class="text-sm font-semibold text-gray-600 mt-4 leading-relaxed max-w-[220px] mx-auto">
               {{ t.note }}
             </p>
           </div>
