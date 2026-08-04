@@ -22,11 +22,5 @@ const emit = defineEmits<{ 'update:lang': [lang: Lang] }>()
     >
       KZ
     </button>
-    <button
-      @click="emit('update:lang', 'en')"
-      :class="`px-2 py-1 rounded-md transition-all duration-200 ${lang === 'en' ? 'bg-[#FFD400] text-blue-950 font-extrabold' : 'text-white/80 hover:text-white'}`"
-    >
-      EN
-    </button>
   </div>
 </template>

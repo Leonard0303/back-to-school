@@ -1,4 +1,4 @@
-export type Lang = 'ru' | 'kz' | 'en'
+export type Lang = 'ru' | 'kz'
 
 export const translations = {
   ru: {
@@ -109,61 +109,6 @@ export const translations = {
     modal: {
       closeLabel: 'Нысанды жабу',
       formTitle: 'Өтінім нысаны',
-    },
-  },
-  en: {
-    hero: {
-      badge: '★ BACK TO SCHOOL',
-      title: 'STUDY! CONNECT! WIN!',
-      subtitle: 'A ready-made solution for the new school year. Internet up to 500 Mbps, mobile service, TV+ and a tablet — all in one plan.',
-      btn: 'CONNECT NOW',
-      manager: 'A manager will contact you.',
-    },
-    plans: {
-      title: 'Everything you need for study, communication, and entertainment.',
-      subtitle: '',
-      badge: 'ALL-INCLUSIVE PLAN',
-      contractBadge: '3-YEAR CONTRACT',
-      priceLabel: 'PROMO PRICE',
-      price: '12 990',
-      period: '₸/month',
-      btn: 'CONNECT',
-      note: '4 benefits in one plan.',
-      features: [
-        { icon: '🌐', title: 'High-Speed Internet', desc: 'Up to <strong>500 Mbps</strong> of home internet.' },
-        { icon: '📱', title: 'Mobile Service', desc: '<strong>40 GB</strong> • <strong>250 minutes</strong> • <strong>100 SMS</strong> • unlimited on-net.' },
-        { icon: '💻', title: 'Modern Tablet', desc: 'The tablet is included in the plan.' },
-        { icon: '📺', title: 'TV+ Teens', desc: '<strong>18 channels</strong> • <strong>2 online cinemas</strong> • Up to <strong>3 devices</strong> at once.' },
-      ],
-    },
-    steps: {
-      title: 'Get connected in 3 steps',
-      step1Title: 'Submit your request',
-      step1Desc: 'Your name, phone number, and city.',
-      step2Title: 'Confirm your connection',
-      step2Desc: 'A specialist will call within 15 minutes.',
-      step3Title: 'Get connected and enjoy',
-      step3Desc: 'We\'ll deliver the tablet and set up all services.',
-    },
-    cta: {
-      titleLine1: 'Everything is ready for the',
-      titleHighlight: 'new school year!',
-      titleLine2: '',
-      desc: 'Submit your request and connect the "All Inclusive" plan for just 12,990 ₸/month.',
-      btn: 'CONNECT NOW',
-    },
-    footer: {
-      imageAI: 'All images are created using AI.',
-      note1: '*Connection is available subject to technical feasibility.',
-      note2: 'The subscription fee does not include equipment rental. Modem rental starts from 414.29 ₸/month, VAT included.',
-      note3: 'Equipment is delivered by our specialist on business days from 9:00 to 18:00.',
-      note4: 'Additional SIM cards can be connected within the «Back to School» service packages.',
-      note5: 'The tablet is provided to the Subscriber as part of the «Back to School» product offer. In case of early termination of participation in the product offer before the end of the Contract period, the Subscriber undertakes to pay Kcell JSC the residual value of the tablet in the manner and on the terms stipulated by the tripartite agreement.',
-      oferta: 'Review the terms of the public <a href="https://telecom.kz/storage/uploads/b0/f0/cf54b090f0e9318b68eb4653594a824eeb04a3c8/CytCzwLZImyJcsYm8urJxU5IoFBoRK1uggo2DsAA.pdf" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #6b7a94; font-weight: 600;">offer</a>',
-    },
-    modal: {
-      closeLabel: 'Close form',
-      formTitle: 'Application form',
     },
   },
 }

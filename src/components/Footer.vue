@@ -35,7 +35,7 @@ const t = computed(() => translations[props.lang])
       </template>
 
       <!-- KZ -->
-      <template v-else-if="lang === 'kz'">
+      <template v-else>
         <p style="margin: 0 0 2px; font-weight: 600; color: #6b7a94;">Қосылу шарттары</p>
         <p style="margin: 0;">Акциядағы планшеттер саны шектеулі. Ұсыныс 3 жылдық келісімшартпен қосылады.</p>
         <p style="margin: 0;">Қосылу техникалық мүмкіндік болған жағдайда жүзеге асырылады.</p>
@@ -52,26 +52,6 @@ const t = computed(() => translations[props.lang])
         <p style="margin: 0;" v-html="t.footer.oferta" />
         <p style="margin: 0;">{{ t.footer.imageAI }}</p>
         <p style="margin: 4px 0 0;">© 2026 «Қазақтелеком» АҚ. Барлық құқықтар қорғалған.</p>
-      </template>
-
-      <!-- EN -->
-      <template v-else>
-        <p style="margin: 0 0 2px; font-weight: 600; color: #6b7a94;">Terms of connection</p>
-        <p style="margin: 0;">The number of promotional tablets is limited. The offer is valid when connecting under a 3-year contract.</p>
-        <p style="margin: 0;">Connection is available where technically feasible.</p>
-        <p style="margin: 0;">Equipment rental is not included in the subscription fee. Modem rental starts from 414.29 ₸/month, VAT included.</p>
-        <p style="margin: 0;">Equipment is delivered by our specialist on business days from 09:00 to 18:00.</p>
-        <p style="margin: 0;">Additional SIM cards can be connected within Back to School service packages.</p>
-        <p style="margin: 0;">The tablet is provided to the Subscriber under the Back to School product offer. In case of early termination of participation in the product offer before the end of the contract period, the Subscriber undertakes to pay Kcell JSC the residual value of the tablet in the manner and on the terms stipulated by the tripartite agreement.</p>
-
-        <p style="margin: 12px 0 2px; font-weight: 600; color: #6b7a94;">Licenses</p>
-        <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">Kazakhtelecom JSC:</span> License No. 14014826 dated October 9, 2014, issued by the Committee for Communications, Informatization and Information of the Ministry of Investment and Development of the Republic of Kazakhstan.</p>
-        <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">Kcell JSC (Kcell/activ):</span> State License No. ДС 0000270 dated June 8, 1998, valid indefinitely, issued by the Committee for Communications, Informatization and Information of the Ministry of Investment and Development of the Republic of Kazakhstan.</p>
-        <p style="margin: 0;"><span style="font-weight: 600; color: #6b7a94;">ALACAST LLP (Television):</span> License No. 12016823 dated November 22, 2012, issued to ALACAST LLP, with services provided using the telecommunications network of Kazakhtelecom JSC.</p>
-        <hr style="border: none; border-top: 1px solid #e8ecf4; margin: 12px 0;" />
-        <p style="margin: 0;" v-html="t.footer.oferta" />
-        <p style="margin: 0;">{{ t.footer.imageAI }}</p>
-        <p style="margin: 4px 0 0;">© 2026 Kazakhtelecom JSC. All rights reserved.</p>
       </template>
     </div>
   </footer>
