@@ -7,6 +7,7 @@
  */
 import type { Lang } from '../translations'
 import type { UTMParams } from '../composables/useUTM'
+import { getClientId } from '../composables/useAnalytics'
 
 /** Базовый адрес приложения форм QBox (часть ссылки до «#»). */
 const QBOX_BASE_URL = 'https://qbox.telecom.kz/forms/'
@@ -38,6 +39,9 @@ export const buildLeadFormUrl = (lang: Lang, utm: UTMParams): string => {
   const params = new URLSearchParams({
     lang: FORM_LANG[lang],
     product: PRODUCT_NAME,
+    // Тот же ID, что уходит в аналитику — связывает заявку с сессией.
+    // В QBox его нужно принять в скрытое поле (см. отчёт).
+    client_id: getClientId(),
   })
   Object.entries(utm).forEach(([key, value]) => {
     if (value) params.append(key, value)

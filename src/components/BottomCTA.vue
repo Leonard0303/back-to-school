@@ -3,10 +3,17 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
 import finalHeroGadgets from '../imports/KT_image(new).png'
+import { track } from '../composables/useAnalytics'
 
 const props = defineProps<{ lang: Lang }>()
 const emit = defineEmits<{ 'open-form': [] }>()
 const t = computed(() => translations[props.lang])
+
+// b2s_cta_click, placement: 'bottom' — кнопка в нижнем блоке, открывает форму
+const onCtaClick = () => {
+  track('cta_click', { placement: 'bottom', lang: props.lang })
+  emit('open-form')
+}
 
 const sectionRef = ref<HTMLDivElement | null>(null)
 const leftRef = ref<HTMLDivElement | null>(null)
@@ -90,7 +97,7 @@ onUnmounted(() => {
           </p>
           <button
             class="cta-yellow bottom-cta-btn"
-            @click="emit('open-form')"
+            @click="onCtaClick"
             style="
               background: #FFD400;
               color: #001060;

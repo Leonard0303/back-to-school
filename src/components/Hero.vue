@@ -2,6 +2,7 @@
 import { ref, computed, onMounted } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
+import { track } from '../composables/useAnalytics'
 import heroPhotoDesktop from '../imports/KT_B2S_website_desktop.png'
 import heroPhotoMobile from '../imports/KT_B2S_website_mobile.png'
 import ktLogo from '../imports/KT_logo_2_W (1).png'
@@ -33,6 +34,8 @@ onMounted(() => {
 })
 
 const scrollToCTA = () => {
+  // b2s_cta_click, placement: 'hero' — кнопка на первом экране
+  track('cta_click', { placement: 'hero', lang: props.lang })
   document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
 }
 

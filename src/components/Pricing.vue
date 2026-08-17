@@ -2,11 +2,14 @@
 import { computed } from 'vue'
 import type { Lang } from '../translations'
 import { translations } from '../translations'
+import { track } from '../composables/useAnalytics'
 
 const props = defineProps<{ lang: Lang }>()
 const t = computed(() => translations[props.lang].plans)
 
 const scrollToCTA = () => {
+  // b2s_cta_click, placement: 'pricing' — кнопка в карточке тарифа
+  track('cta_click', { placement: 'pricing', lang: props.lang })
   document.getElementById('final-cta')?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>

@@ -15,7 +15,7 @@ const steps = computed(() => [
 </script>
 
 <template>
-  <section class="py-16 md:py-24 bg-white">
+  <section id="steps" class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-4 max-w-6xl">
       <h2 class="text-3xl md:text-5xl font-black text-center text-blue-950 mb-16 tracking-tight">
         {{ t.steps.title }}

@@ -84,9 +84,6 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
   }
 
   const title = config.title ?? "Figma Make App"
-  const description = config.description ?? ''
-  const favicon = config.icons?.icon ?? ''
-  const socialImage = config.openGraph?.image ?? ''
   const language = sanitizeHtmlValue(config.language) || 'en'
   const googleAnalyticsId = sanitizeHtmlValue(config.analytics?.googleAnalyticsId)
   const headStart = config.customScripts?.headStart ?? ''
@@ -125,29 +122,11 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
         result = replaceHtmlCommentSlot(result, 'figma:body-start', bodyStart)
         result = replaceHtmlCommentSlot(result, 'figma:body-end', bodyEnd)
 
+        // ВАЖНО: мета-теги (description, robots, og:*, twitter:*) здесь НЕ
+        // генерируются. Единственный источник — index.html. Раньше плагин
+        // дописывал свои теги поверх, и в сборке получались дубли
+        // (og:title подставлялся как «Figma Make App»).
         const tags: HtmlTagDescriptor[] = []
-        if (description) {
-          tags.push({ tag: 'meta', attrs: { name: 'description', content: description }, injectTo: 'head' })
-        }
-        if (config.robots?.index === false) {
-          tags.push({ tag: 'meta', attrs: { name: 'robots', content: 'noindex, nofollow' }, injectTo: 'head' })
-        }
-        if (favicon) {
-          tags.push({ tag: 'link', attrs: { rel: 'icon', href: favicon }, injectTo: 'head' })
-        }
-        if (title) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:title', content: title }, injectTo: 'head' })
-        }
-        if (description) {
-          tags.push({ tag: 'meta', attrs: { property: 'og:description', content: description }, injectTo: 'head' })
-        }
-        if (socialImage) {
-          tags.push(
-            { tag: 'meta', attrs: { property: 'og:image', content: socialImage }, injectTo: 'head' },
-            { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' }, injectTo: 'head' },
-            { tag: 'meta', attrs: { name: 'twitter:image', content: socialImage }, injectTo: 'head' },
-          )
-        }
 
         if (googleAnalyticsId) {
           tags.push(
